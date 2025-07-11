@@ -1,0 +1,38 @@
+<h2>Built-in validations</h2>
+
+<form #myForm="ngForm" (ngSubmit)="submitForm(myForm)" class="form">
+  <label for="username">Username: <span>{{ username }}</span></label>
+  <input
+      [(ngModel)]="username"
+      name="username"
+      required
+      minlength="5"
+      maxlength="20"
+      #usernameRef="ngModel"
+    />
+  <ul *ngIf="usernameRef.invalid && usernameRef.touched">
+    <li *ngIf="usernameRef.errors?.['required']">Username obbligatorio</li>
+    <li *ngIf="usernameRef.errors?.['minlength']">La lunghezza minima è 5</li>
+    <li *ngIf="usernameRef.errors?.['maxlength']">La lunghezza massima è 20</li>
+  </ul>
+
+  <label for="email">Email: <span>{{ email }}</span></label>
+  <input
+      [(ngModel)]="email"
+      name="email"
+      required
+      email
+      pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+      minlength="4"
+      maxlength="30"
+      #emailRef="ngModel"
+    />
+  <ul *ngIf="emailRef.invalid && emailRef.touched">
+    <li *ngIf="emailRef.errors?.['required']">Email obbligatoria</li>
+    <li *ngIf="emailRef.errors?.['email']">Formato email non valido</li>
+    <li *ngIf="emailRef.errors?.['minlength']">La lunghezza minima è 4</li>
+    <li *ngIf="emailRef.errors?.['maxlength']">La lunghezza massima è 30</li>
+  </ul>
+
+  <button type="submit" [disabled]="!myForm.valid">Invia</button>
+</form>

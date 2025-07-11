@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { FormComponent } from './components/form/form';
+import { FormValidatedComponent } from './components/form-validated/form-validated';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [FormComponent, FormValidatedComponent],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styles: ``
 })
 export class App {
   protected title = 'angular-forms';
