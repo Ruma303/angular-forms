@@ -13,7 +13,7 @@ interface form {
   standalone: true,
   imports: [FormsModule, CommonModule],
   template: `
-    <h2>Template-driven forms</h2>
+    <h2>Primitive signals forms</h2>
 
     <form #myForm="ngForm" (ngSubmit)="submitForm(myForm)" class="form">
       <label for="username">
