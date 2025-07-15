@@ -42,6 +42,7 @@ interface form {
         <p *ngIf="isAdult()">Age: {{ form()?.age }}</p>
       </div>
     }
+
     @if(visibleError()) {
       <div>
         <h3>{{ visibleError() }}</h3>
@@ -102,11 +103,10 @@ export class FormComponent {
       this.form.set(payload);
       this.submitted.set(true);
       this.errorMessage.set('');
-      this.formExported.emit(payload); // emit the form data
+      this.formExported.emit(payload);
     } else {
       this.submitted.set(false);
       this.errorMessage.set('Please fill out all fields correctly.');
     }
   }
 }
-
